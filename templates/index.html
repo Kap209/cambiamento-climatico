@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPoints | Salva il Pianeta</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>EcoPoints 🌿</h1>
+        <p>Ogni piccola azione conta.</p>
+    </header>
+
+    <div class="score-container">
+        <span>Il tuo impatto ambientale:</span>
+        <span id="punti">0</span>
+        <small>Punti Guadagnati</small>
+    </div>
+
+    <main class="grid-azioni">
+        <div class="card">
+            <i>♻️</i>
+            <h3>Riciclo Carta</h3>
+            <p>Hai differenziato correttamente la carta.</p>
+            <button onclick="aggiungiPunti(10)">+10 Punti</button>
+        </div>
+
+        <div class="card">
+            <i>🚲</i>
+            <h3>Mobilità Dolce</h3>
+            <p>Oggi niente macchina, solo bici o piedi!</p>
+            <button onclick="aggiungiPunti(30)">+30 Punti</button>
+        </div>
+
+        <div class="card">
+            <i>🧴</i>
+            <h3>No Plastica</h3>
+            <p>Hai usato la borraccia invece della bottiglietta.</p>
+            <button onclick="aggiungiPunti(20)">+20 Punti</button>
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

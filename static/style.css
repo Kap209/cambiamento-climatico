@@ -1,0 +1,86 @@
+:root {
+    --primary-green: #22c55e;
+    --dark-green: #166534;
+    --light-bg: #f0fdf4;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+    width: 100%;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.score-container {
+    background: white;
+    padding: 20px 50px;
+    border-radius: 20px;
+    margin-top: -30px; /* Effetto sovrapposto */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#punti {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-green);
+    display: block;
+}
+
+.grid-azioni {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px 0;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+button {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: var(--dark-green);
+}
