@@ -84,3 +84,21 @@ button {
 button:hover {
     background-color: var(--dark-green);
 }
+
+nav {
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
