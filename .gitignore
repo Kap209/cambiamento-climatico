@@ -1,0 +1,4 @@
+__pycache__/
+utenti.db
+.env
+.vscode/
