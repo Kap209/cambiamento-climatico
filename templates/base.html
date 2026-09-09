@@ -23,6 +23,13 @@
         </nav>
     </header>
     <main style="padding: 20px; max-width: 800px; margin: auto;">
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div style="background: #ffeb3b; padding: 10px; text-align: center;">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
         {% block content %}{% endblock %}
     </main>
 </body>

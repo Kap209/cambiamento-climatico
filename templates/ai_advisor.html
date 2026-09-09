@@ -1,20 +1,44 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-    <h2>🤖 AI Eco-Advisor</h2>
-    <p>Chiedi all'intelligenza artificiale come riciclare correttamente un oggetto.</p>
+<div style="max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center;">
     
-    <form method="POST">
-        <input type="text" name="oggetto" placeholder="Esempio: capsule caffè o olio fritto" required 
-               style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #22c55e;">
-        <button type="submit" style="background: #22c55e; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; margin-left: 5px;">Chiedi all'IA</button>
+    <div style="font-size: 4rem; margin-bottom: 10px;">🤖</div>
+    <h2 style="color: #166534; margin-bottom: 10px;">AI Eco-Advisor</h2>
+    <p style="color: #666; margin-bottom: 30px;">Scrivi un oggetto (es. "bottiglia di plastica") e l'IA ti dirà come riciclarlo correttamente.</p>
+
+    <!-- FORM DI INVIO -->
+    <form action="{{ url_for('ai_advisor') }}" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" 
+               name="oggetto" 
+               placeholder="Cosa vuoi riciclare oggi?" 
+               required 
+               style="padding: 15px; border: 2px solid #22c55e; border-radius: 12px; font-size: 1rem; outline: none;">
+        
+        <button type="submit" 
+                style="background: #22c55e; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s;">
+                Interroga l'IA
+        </button>
     </form>
 
+    <!-- BOX RISPOSTA (Appare solo se l'IA ha risposto) -->
     {% if consiglio %}
-    <div style="margin-top: 25px; padding: 20px; background: #f0fdf4; border-left: 5px solid #22c55e;">
-        <p><strong>L'IA suggerisce:</strong></p>
-        <p>{{ consiglio }}</p>
+    <div style="margin-top: 30px; padding: 20px; background: #f0fdf4; border-left: 5px solid #22c55e; border-radius: 10px; text-align: left; animation: fadeIn 0.5s;">
+        <p style="margin: 0; color: #166534; font-weight: bold;">L'IA suggerisce:</p>
+        <p style="margin: 10px 0 0 0; color: #333; line-height: 1.5;">{{ consiglio }}</p>
     </div>
     {% endif %}
+
 </div>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    button:hover {
+        background: #16a34a;
+        transform: scale(1.02);
+    }
+</style>
 {% endblock %}

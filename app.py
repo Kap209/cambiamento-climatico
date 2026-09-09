@@ -18,7 +18,21 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
-# --- FUNZIONE AGGIUNGI PUNTI (La logica del bottone) ---
+# --- FUNZIONE SIMULAZIONE IA (Mancava questa!) ---
+def chiedi_all_ia(oggetto):
+    testo = oggetto.lower()
+    if "plastica" in testo or "bottiglia" in testo:
+        return "🤖 [Analisi IA]: Plastica individuata. Va nel bidone GIALLO. Svuotala bene prima!"
+    elif "carta" in testo or "cartone" in testo:
+        return "🤖 [Analisi IA]: Cellulosa rilevata. Va nel bidone BLU. Togli lo scotch se presente."
+    elif "vetro" in testo:
+        return "🤖 [Analisi IA]: Vetro rilevato. Va nel bidone VERDE. Attenzione ai tappi!"
+    elif "olio" in testo:
+        return "🤖 [Analisi IA]: RIFIUTO PERICOLOSO. Non buttarlo nel lavandino, portalo al centro di raccolta."
+    else:
+        return "🤖 [Analisi IA]: Materiale non riconosciuto con certezza. Nel dubbio, usa l'indifferenziata o consulta il sito del tuo comune."
+
+# --- FUNZIONE AGGIUNGI PUNTI ---
 @app.route("/aggiungi_punti/<int:valore>")
 def aggiungi_punti(valore):
     if 'user_id' in session:
@@ -33,17 +47,18 @@ def home():
     punti_attuali = 0
     if 'user_id' in session:
         utente = User.query.get(session['user_id'])
-        punti_attuali = utente.punti
+        if utente:
+            punti_attuali = utente.punti
     return render_template("index.html", punti=punti_attuali)
 
 @app.route("/ai-advisor", methods=['GET', 'POST'])
 def ai_advisor():
     consiglio = ""
     if request.method == 'POST':
-        oggetto = request.form.get('oggetto').lower()
-        if "plastica" in oggetto: consiglio = "Va nel bidone GIALLO! (+10 punti)"
-        elif "carta" in oggetto: consiglio = "Va nel bidone BLU! (+10 punti)"
-        else: consiglio = "Chiedi al tuo comune, l'IA è incerta."
+        domanda = request.form.get('oggetto') 
+        if domanda:
+            consiglio = chiedi_all_ia(domanda) # Ora la funzione esiste!
+            
     return render_template("ai_advisor.html", consiglio=consiglio)
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -75,8 +90,26 @@ def logout():
 def negozio():
     punti = 0
     if 'user_id' in session:
-        punti = User.query.get(session['user_id']).punti
+        utente = User.query.get(session['user_id'])
+        if utente:
+            punti = utente.punti
     return render_template("negozio.html", punti=punti)
+
+@app.route("/riscatta_premio/<int:costo>")
+def riscatta_premio(costo):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
+    utente = User.query.get(session['user_id'])
+    
+    if utente.punti >= costo:
+        utente.punti -= costo
+        db.session.commit()
+        flash(f"Premio riscattato! Ti restano {utente.punti} punti.", "success")
+    else:
+        flash("Non hai abbastanza punti!", "danger")
+        
+    return redirect(url_for('negozio'))
 
 if __name__ == "__main__":
     app.run(debug=True)

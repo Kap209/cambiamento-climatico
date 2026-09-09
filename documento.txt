@@ -3,3 +3,4 @@
 3. Migliorare la Sicurezza del sito
 4. Impostare nel sito un intelligenza artificiale
 5. DataBase funzionate = SI
+6. aggiungere nuove cose in negozio e sistemare e verificare

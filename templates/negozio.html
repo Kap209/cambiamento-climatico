@@ -1,10 +1,121 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h2>Negozio Eco 🎁</h2>
-<p>I tuoi punti attuali: <strong>{{ punti }}</strong></p>
-<div style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin-top: 20px;">
-    <h3>Quaderno in carta riciclata</h3>
-    <p>Costo: 100 Punti</p>
-    <button style="background: #eab308; color: black; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Riscatta Premio</button>
+<div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="color: #166534; font-size: 2.5rem;">Eco-Store 🎁</h2>
+    <div style="display: inline-block; background: white; padding: 10px 30px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <span style="font-size: 1.2rem; font-weight: bold;">I tuoi punti: </span>
+        <span style="font-size: 1.5rem; color: #22c55e; font-weight: bold;">{{ punti }}</span>
+    </div>
 </div>
+
+<!-- GRIGLIA FLUIDA DEI PREMI -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 20px;">
+
+    <!-- PREMIO 1: Quaderno -->
+    <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=400&q=80" alt="Quaderno">
+        <div class="shop-card-body">
+            <h3>Quaderno Riciclato</h3>
+            <p>100 pagine di carta 100% riciclata per i tuoi appunti green.</p>
+            <div class="price-tag">Costo: 100 Punti</div>
+            {% if punti >= 100 %}
+                <a href="{{ url_for('riscatta_premio', costo=100) }}" class="buy-btn">Riscatta Ora</a>
+            {% else %}
+                <div class="locked-btn">Mancano {{ 100 - punti }} punti</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- PREMIO 2: Borraccia -->
+    <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=400&q=80" alt="Borraccia">
+        <div class="shop-card-body">
+            <h3>Borraccia in Bamboo</h3>
+            <p>Mantieni le tue bevande fresche e salva gli oceani dalla plastica.</p>
+            <div class="price-tag">Costo: 250 Punti</div>
+            {% if punti >= 250 %}
+                <a href="{{ url_for('riscatta_premio', costo=250) }}" class="buy-btn">Riscatta Ora</a>
+            {% else %}
+                <div class="locked-btn">Mancano {{ 250 - punti }} punti</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- PREMIO 3: Pianta un albero -->
+    <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80" alt="Albero">
+        <div class="shop-card-body">
+            <h3>Pianta un Albero</h3>
+            <p>Doneremo i tuoi punti per piantare un albero vero a tuo nome.</p>
+            <div class="price-tag">Costo: 500 Punti</div>
+            {% if punti >= 500 %}
+                <a href="{{ url_for('riscatta_premio', costo=500) }}" class="buy-btn">Riscatta Ora</a>
+            {% else %}
+                <div class="locked-btn">Mancano {{ 500 - punti }} punti</div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .shop-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+        border: 1px solid #eee;
+    }
+    .shop-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .shop-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .shop-card-body {
+        padding: 20px;
+        text-align: center;
+    }
+    .shop-card h3 {
+        margin: 0 0 10px 0;
+        color: #166534;
+    }
+    .shop-card p {
+        font-size: 0.9rem;
+        color: #666;
+        height: 50px;
+    }
+    .price-tag {
+        font-weight: bold;
+        color: #22c55e;
+        margin: 15px 0;
+        font-size: 1.1rem;
+    }
+    .buy-btn {
+        display: block;
+        background: #22c55e;
+        color: white;
+        padding: 12px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .buy-btn:hover {
+        background: #16a34a;
+    }
+    .locked-btn {
+        background: #f3f4f6;
+        color: #9ca3af;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        border: 1px dashed #d1d5db;
+    }
+</style>
 {% endblock %}
