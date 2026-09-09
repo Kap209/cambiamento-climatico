@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPoints 🌿</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header style="text-align: center; background: #22c55e; color: white; padding: 20px;">
+        <h1>EcoPoints 🌿</h1>
+        <nav style="margin-top: 10px;">
+            <a href="{{ url_for('home') }}" style="color: white; margin: 0 10px; text-decoration: none;">Home</a>
+            <a href="{{ url_for('ai_advisor') }}" style="color: white; margin: 0 10px; text-decoration: none;">AI Advisor</a>
+            <a href="{{ url_for('negozio') }}" style="color: white; margin: 0 10px; text-decoration: none;">Negozio</a>
+            {% if session.get('user') %}
+                <span style="margin-left: 15px;">👤 {{ session['user'] }}</span>
+                <a href="{{ url_for('logout') }}" style="color: #ff8888; margin-left: 10px;">Esci</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" style="color: white; margin-left: 10px;">Accedi</a>
+                <a href="{{ url_for('signup') }}" style="color: white; margin-left: 10px;">Iscriviti</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main style="padding: 20px; max-width: 800px; margin: auto;">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

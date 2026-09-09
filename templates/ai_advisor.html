@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <h2>🤖 AI Eco-Advisor</h2>
+    <p>Chiedi all'intelligenza artificiale come riciclare correttamente un oggetto.</p>
+    
+    <form method="POST">
+        <input type="text" name="oggetto" placeholder="Esempio: capsule caffè o olio fritto" required 
+               style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #22c55e;">
+        <button type="submit" style="background: #22c55e; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; margin-left: 5px;">Chiedi all'IA</button>
+    </form>
+
+    {% if consiglio %}
+    <div style="margin-top: 25px; padding: 20px; background: #f0fdf4; border-left: 5px solid #22c55e;">
+        <p><strong>L'IA suggerisce:</strong></p>
+        <p>{{ consiglio }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

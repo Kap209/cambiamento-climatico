@@ -1,0 +1,5 @@
+1. creare l'iscrizione del utente e il login + verificare che va!
+2. Creare un database per sare dei utenti + verificare
+3. Migliorare la Sicurezza del sito
+4. Impostare nel sito un intelligenza artificiale
+5. DataBase funzionate = SI

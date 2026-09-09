@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Negozio Eco</title>
-</head>
-<body>
-    <header>
-        <h1>Negozio Premi 🎁</h1>
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a> | 
-            <a href="{{ url_for('negozio') }}">Negozio</a> | 
-            <a href="{{ url_for('info') }}">Info</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Usa i tuoi punti qui!</h2>
-        <div class="card">
-            <h3>Quaderno Riciclato</h3>
-            <p>Costo: 100 punti</p>
-            <button>Riscatta</button>
-        </div>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2>Negozio Eco 🎁</h2>
+<p>I tuoi punti attuali: <strong>{{ punti }}</strong></p>
+<div style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin-top: 20px;">
+    <h3>Quaderno in carta riciclata</h3>
+    <p>Costo: 100 Punti</p>
+    <button style="background: #eab308; color: black; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Riscatta Premio</button>
+</div>
+{% endblock %}

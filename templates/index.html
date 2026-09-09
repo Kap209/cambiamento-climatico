@@ -1,53 +1,39 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPoints | Salva il Pianeta</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <h1>EcoPoints 🌿</h1>
-        <p>Ogni piccola azione conta.</p>
-    </header>
+{% extends "base.html" %}
 
-    <div class="score-container">
-        <span>Il tuo impatto ambientale:</span>
-        <span id="punti">0</span>
-        <small>Punti Guadagnati</small>
+{% block content %}
+<!-- Sezione Punteggio -->
+<div style="text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px;">
+    <p style="text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 5px;">Il tuo Impatto Ambientale</p>
+    <h1 style="font-size: 5rem; color: #22c55e; margin: 0; line-height: 1;">{{ punti }}</h1>
+    <p style="color: #22c55e; font-weight: bold;">Punti Eco</p>
+</div>
+
+<!-- Sezione Quest (Affiancate) -->
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;">
+    
+    <!-- AZIONE 1 -->
+    <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; transition: transform 0.3s;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">♻️</div>
+        <h3 style="margin: 10px 0;">Riciclo Carta</h3>
+        <p style="color: #22c55e; font-weight: bold; font-size: 1.2rem;">+10 Punti</p>
+        <a href="{{ url_for('aggiungi_punti', valore=10) }}" style="display: block; background: #22c55e; color: white; padding: 12px; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 15px;">Registra</a>
     </div>
 
-    <main class="grid-azioni">
-        <div class="card">
-            <i>♻️</i>
-            <h3>Riciclo Carta</h3>
-            <p>Hai differenziato correttamente la carta.</p>
-            <button onclick="aggiungiPunti(10)">+10 Punti</button>
-        </div>
+    <!-- AZIONE 2 -->
+    <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; transition: transform 0.3s;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">🚲</div>
+        <h3 style="margin: 10px 0;">Bici/Piedi</h3>
+        <p style="color: #22c55e; font-weight: bold; font-size: 1.2rem;">+30 Punti</p>
+        <a href="{{ url_for('aggiungi_punti', valore=30) }}" style="display: block; background: #22c55e; color: white; padding: 12px; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 15px;">Registra</a>
+    </div>
 
-        <div class="card">
-            <i>🚲</i>
-            <h3>Mobilità Dolce</h3>
-            <p>Oggi niente macchina, solo bici o piedi!</p>
-            <button onclick="aggiungiPunti(30)">+30 Punti</button>
-        </div>
+    <!-- AZIONE 3 -->
+    <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; transition: transform 0.3s;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">🧴</div>
+        <h3 style="margin: 10px 0;">Borraccia</h3>
+        <p style="color: #22c55e; font-weight: bold; font-size: 1.2rem;">+20 Punti</p>
+        <a href="{{ url_for('aggiungi_punti', valore=20) }}" style="display: block; background: #22c55e; color: white; padding: 12px; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 15px;">Registra</a>
+    </div>
 
-        <div class="card">
-            <i>🧴</i>
-            <h3>No Plastica</h3>
-            <p>Hai usato la borraccia invece della bottiglietta.</p>
-            <button onclick="aggiungiPunti(20)">+20 Punti</button>
-        </div>
-    </main>
-
-    <script src="/static/script.js"></script>
-
-    <nav>
-    <a href="{{ url_for('home') }}">Home</a>
-    <a href="{{ url_for('negozio') }}">Negozio</a>
-    <a href="{{ url_for('info') }}">Info</a>
-    
-</nav>
-</body>
-</html>
+</div>
+{% endblock %}

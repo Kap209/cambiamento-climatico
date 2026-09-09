@@ -102,3 +102,163 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
+/* Forza il colore dei link nel menu per renderli visibili */
+nav {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1); /* Uno sfondo leggerino per staccare */
+    border-radius: 8px;
+}
+
+nav a {
+    color: #ffffff !important; /* Forza il BIANCO */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 1.1rem;
+    display: inline-block; /* Serve per rendere l'area cliccabile meglio */
+}
+
+nav a:hover {
+    color: #d1fae5 !important; /* Cambia colore quando ci passi sopra */
+    text-decoration: underline;
+}
+
+/* Se vedi dei punti elenco brutti, toglili */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Container della navigazione */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Spazio tra i bottoni */
+    margin-top: 20px;
+}
+
+/* Stile base per i bottoni del menu */
+.nav-btn {
+    padding: 10px 22px;
+    border-radius: 50px; /* Forma a pillola */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease; /* Questo rende tutto FLUIDO */
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+/* Stile specifico per ISCRIVITI (Colore pieno) */
+.btn-signup {
+    background-color: #ffffff;
+    color: #16a34a !important; /* Testo verde */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-signup:hover {
+    transform: translateY(-3px); /* Si alza leggermente */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f0fdf4;
+}
+
+/* Stile specifico per ACCEDI (Bordo bianco) */
+.btn-login {
+    background-color: transparent;
+    color: #ffffff !important;
+    border: 2px solid #ffffff;
+}
+
+.btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05); /* Si ingrandisce leggermente */
+}
+
+/* Stile per ESCI (Rosso soft) */
+.btn-logout {
+    color: #ff8888 !important;
+    font-size: 0.9rem;
+}
+
+.btn-logout:hover {
+    color: #ff4444 !important;
+    text-decoration: underline;
+}
+
+body {
+    -webkit-font-smoothing: antialiased; /* Rende le scritte più pulite */
+    scroll-behavior: smooth; /* Rende gli scorrimenti fluidi */
+}
+
+/* Container Navigazione */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap; /* Così su cellulare vanno a capo ordinatamente */
+}
+
+/* Base comune per tutti i bottoni del menu */
+.nav-btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animazione ancora più fluida */
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+/* HOME: Stile minimale */
+.btn-home {
+    color: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-home:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* NEGOZIO: Colore speciale (Esempio: Oro/Giallo per i premi) */
+.btn-store {
+    background-color: #facc15; /* Giallo brillante */
+    color: #854d0e !important; /* Testo marrone scuro per contrasto */
+    box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
+}
+
+.btn-store:hover {
+    background-color: #fde047;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(250, 204, 21, 0.4);
+}
+
+/* ACCEDI: Bordo bianco */
+.btn-login {
+    color: white !important;
+    border: 2px solid white;
+}
+
+.btn-login:hover {
+    background-color: white;
+    color: #16a34a !important;
+}
+
+/* ISCRIVITI: Bianco pieno */
+.btn-signup {
+    background-color: white;
+    color: #16a34a !important;
+}
+
+.btn-signup:hover {
+    background-color: #f0fdf4;
+    transform: translateY(-3px);
+}
